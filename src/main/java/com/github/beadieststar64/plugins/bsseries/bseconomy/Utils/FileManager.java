@@ -30,6 +30,8 @@ public class FileManager {
                 if(split.length == 1) {
                     createFile(plugin.getDataFolder(), split[0]);
                 }else{
+                    plugin.getLogger().info("Folder: " + plugin.getDataFolder() + File.separator + split[0]);
+                    plugin.getLogger().info("File: " + split[1]);
                     createFile(new File(plugin.getDataFolder(), split[0]), split[1]);
                 }
             }
