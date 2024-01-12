@@ -1,0 +1,11 @@
+Currency: GP
+Language: ja_JP
+#Supported language list: ja_JP, en_US
+Translate_Folder: translate
+Initial_Holdings: 100000
+Use_Vault: true
+Login_Item:
+#Item_Type is Item, Money
+  1_Item:
+    Item_Type: Money
+    Money: 10000
