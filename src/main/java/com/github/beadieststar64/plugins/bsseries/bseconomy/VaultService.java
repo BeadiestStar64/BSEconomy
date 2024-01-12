@@ -32,6 +32,7 @@ public class VaultService {
         if(Bukkit.getPluginManager().getPlugin("Vault") == null) {
             plugin.getLogger().severe("Vault not found!");
             return true;
+            //error
         }
         RegisteredServiceProvider<Economy> rsp = plugin.getServer().getServicesManager().getRegistration(net.milkbowl.vault.economy.Economy.class);
         if (rsp == null) {
