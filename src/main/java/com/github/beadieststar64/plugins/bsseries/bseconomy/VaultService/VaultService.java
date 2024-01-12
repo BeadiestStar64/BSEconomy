@@ -1,4 +1,4 @@
-package com.github.beadieststar64.plugins.bsseries.bseconomy;
+package com.github.beadieststar64.plugins.bsseries.bseconomy.VaultService;
 
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.economy.Economy;
@@ -7,6 +7,9 @@ import org.bukkit.permissions.Permission;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.RegisteredServiceProvider;
 
+import java.util.HashMap;
+import java.util.UUID;
+
 public class VaultService {
 
     private final Plugin plugin;
@@ -14,18 +17,33 @@ public class VaultService {
     private static Permission perms = null;
     private static Chat chat = null;
 
+    private static VaultService instance;
+    private static VaultImplementer vi;
+    private VaultHook vh;
+
+    public final HashMap<UUID,Double> playerBank = new HashMap<>();
+
     public VaultService(Plugin plugin) {
         this.plugin = plugin;
+        instance = this;
+        vi = new VaultImplementer();
+        vh = new VaultHook(plugin);
+    }
+
+    public static VaultService getInstance() {
+        return instance;
+    }
+
+    public static VaultImplementer getVIInstance(){
+        return vi;
     }
 
     public void vaultInit() {
-        if (!setupEconomy() ) {
-            plugin.getLogger().severe(String.format("[%s] - Disabled due to no Vault dependency found!", plugin.getDescription().getName()));
-            plugin.getServer().getPluginManager().disablePlugin(plugin);
-            return;
-        }
-        setupPermissions();
-        setupChat();
+        vh.hook();
+    }
+
+    public void vaultPurge() {
+        vh.unhook();
     }
 
     private boolean setupEconomy() {

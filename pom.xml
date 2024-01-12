@@ -6,7 +6,7 @@
 
   <groupId>com.github.BeadiestStar64.Plugins.BSseries</groupId>
   <artifactId>BSEconomy</artifactId>
-  <version>1.0.0</version>
+  <version>0.0.1-bata2</version>
   <packaging>jar</packaging>
 
   <name>BSEconomy</name>
@@ -74,9 +74,9 @@
       <dependency>
           <groupId>com.github.BeadiestStar64.Plugins.BSseries</groupId>
           <artifactId>BSCore</artifactId>
-          <version>pre-0.0.1-2</version>
+          <version>pre-0.0.1-bata4</version>
           <scope>system</scope>
-          <systemPath>C:/Users/myfri/IdeaProjects/BSCore/target/BSCore-1.0.0.jar</systemPath>
+          <systemPath>//192.168.0.17/Turtle/beadieststar64/.m2/repository/com/github/BeadiestStar64/Plugins/BSseries/BSCore/pre-0.0.1-bata4/BSCore-pre-0.0.1-bata4.jar</systemPath>
       </dependency>
       <dependency>
           <groupId>com.github.MilkBowl</groupId>
