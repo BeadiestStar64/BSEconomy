@@ -2,3 +2,4 @@
 translate, ja_JP.properties
 translate, en_US.properties
 config.yml
+yml, BSPermission.yml

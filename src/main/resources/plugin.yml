@@ -2,8 +2,10 @@ name: BSEconomy
 version: '${project.version}'
 main: com.github.beadieststar64.plugins.bsseries.bseconomy.BSEconomy
 api-version: '1.20'
-depend: [BSCore, Vault]
-loadbefore: [Vault]
+depend:
+  - BSCore
+softdepend:
+  - Vault
 
 commands:
   bank:

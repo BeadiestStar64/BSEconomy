@@ -22,7 +22,7 @@ public class Commands implements CommandExecutor {
     }
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String str, @NotNull String[] strings) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String str, @NotNull String[] args) {
         Player player = null;
 
         if(sender instanceof Player) {
@@ -32,19 +32,32 @@ public class Commands implements CommandExecutor {
         if(command.getName().equals("bank")) {
             Wallet wallet = new Wallet(plugin);
 
-            if(strings[0].equals("create")) {
+            switch (args[0]) {
+                case "check" -> {
+                    if(checkSender(3, sender)) {
+                        return true;
+                    }
+                    if(checkSender(1, sender)) {
+                        if(sender.hasPermission("")) {
+
+                        }
+                    }
+                }
+            }
+
+            if(args[0].equals("create")) {
                 if(checkSender(3, sender)) {
                     VaultService vs = new VaultService(plugin);
-                    Player target = Bukkit.getPlayer(strings[1]);
+                    Player target = Bukkit.getPlayer(args[1]);
                     vs.playerBank.put(target.getUniqueId(), 0.0);
                     YamlReader yr = new YamlReader(plugin);
-                    sender.sendMessage(strings[1] + "さんの口座を開設しました");
+                    sender.sendMessage(args[1] + "さんの口座を開設しました");
                     sender.sendMessage("残高: " + vs.playerBank.get(target.getUniqueId()) + yr.getYaml().getString("Currency"));
                     return true;
                 }
             }
-            if(strings[0].equals("balance")) {
-                if(strings.length < 2) {
+            if(args[0].equals("balance")) {
+                if(args.length < 2) {
                     if(checkSender(1, sender)) {
                         if(config.getYaml().getBoolean("Use_Vault")) {
                             VaultService vs = new VaultService(plugin);
@@ -61,13 +74,13 @@ public class Commands implements CommandExecutor {
                     }
                 }
             }
-            if(strings[0].equals("set")) {
-                if(strings.length < 3) {
+            if(args[0].equals("set")) {
+                if(args.length < 3) {
                     if(checkSender(1, sender)) {
                         try {
                             YamlReader config = new YamlReader(plugin);
                             if (!config.getYaml().getBoolean("Decimal_Balance")) {
-                                wallet.setIntegerWallet(player, Integer.parseInt(strings[1]));
+                                wallet.setIntegerWallet(player, Integer.parseInt(args[1]));
                             }
                             return true;
                         }catch (Exception e) {

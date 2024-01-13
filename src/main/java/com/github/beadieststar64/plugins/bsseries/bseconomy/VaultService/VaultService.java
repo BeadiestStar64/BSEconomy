@@ -1,5 +1,6 @@
 package com.github.beadieststar64.plugins.bsseries.bseconomy.VaultService;
 
+import com.github.beadieststar64.plugins.bsseries.bscore.YamlReader;
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
@@ -13,29 +14,22 @@ import java.util.UUID;
 public class VaultService {
 
     private final Plugin plugin;
-    private static Economy econ = null;
-    private static Permission perms = null;
-    private static Chat chat = null;
+    private final VaultHook vh;
 
-    private static VaultService instance;
-    private static VaultImplementer vi;
-    private VaultHook vh;
+    private static Economy econ = null;
+    public static VaultService getInstance;
+    public static VaultImplementer getVIInstance;
 
     public final HashMap<UUID,Double> playerBank = new HashMap<>();
+    public static boolean useVault;
 
     public VaultService(Plugin plugin) {
         this.plugin = plugin;
-        instance = this;
-        vi = new VaultImplementer();
+        getInstance = this;
+        getVIInstance = new VaultImplementer();
         vh = new VaultHook(plugin);
-    }
-
-    public static VaultService getInstance() {
-        return instance;
-    }
-
-    public static VaultImplementer getVIInstance(){
-        return vi;
+        YamlReader config = new YamlReader(plugin);
+        useVault = config.getYaml().getBoolean("Use_Vault");
     }
 
     public void vaultInit() {
@@ -60,25 +54,7 @@ public class VaultService {
         return true;
     }
 
-    private void setupChat() {
-        RegisteredServiceProvider<Chat> rsp = plugin.getServer().getServicesManager().getRegistration(Chat.class);
-        chat = rsp.getProvider();
-    }
-
-    private void setupPermissions() {
-        RegisteredServiceProvider<Permission> rsp = plugin.getServer().getServicesManager().getRegistration(Permission.class);
-        perms = rsp.getProvider();
-    }
-
     public static Economy getEconomy() {
         return econ;
-    }
-
-    public static Permission getPermissions() {
-        return perms;
-    }
-
-    public static Chat getChat() {
-        return chat;
     }
 }

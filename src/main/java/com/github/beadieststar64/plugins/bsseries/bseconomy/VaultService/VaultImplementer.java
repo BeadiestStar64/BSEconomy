@@ -12,7 +12,7 @@ import java.util.UUID;
 
 public class VaultImplementer implements Economy {
 
-    private final VaultService service = VaultService.getInstance();
+    private final VaultService service = VaultService.getInstance;
 
     @Override
     public boolean isEnabled() {
@@ -21,7 +21,7 @@ public class VaultImplementer implements Economy {
 
     @Override
     public String getName() {
-        return null;
+        return "BSEconomy";
     }
 
     @Override

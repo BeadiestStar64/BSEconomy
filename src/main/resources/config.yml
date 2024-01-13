@@ -4,6 +4,8 @@ Language: ja_JP
 Translate_Folder: translate
 Initial_Holdings: 100000
 Use_Vault: true
+Use_PermissionAPI: false
+PermissionAPI: BSCore
 
 #BSBank Service
 Yml_Folder: yml

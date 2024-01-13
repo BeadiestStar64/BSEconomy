@@ -1,6 +1,5 @@
 package com.github.beadieststar64.plugins.bsseries.bseconomy.VaultService;
 
-import com.github.beadieststar64.plugins.bsseries.bseconomy.BSEconomy;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -14,7 +13,7 @@ public class VaultHook {
 
     public VaultHook(Plugin plugin) {
         this.plugin = plugin;
-        this.econ = VaultService.getVIInstance();
+        this.econ = VaultService.getVIInstance;
     }
 
     public void hook() {
