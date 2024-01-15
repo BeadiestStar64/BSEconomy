@@ -28,7 +28,7 @@ public class Wallet {
         File file = new File(plugin.getDataFolder() + File.separator + config.getString("Yml_Folder"), "bank.yml");
         if(!file.exists()) {
             BankService bs = new BankService(plugin);
-            bs.init();
+            bs.initialize();
         }
         if(!by.getYaml().contains(player.getUniqueId() + ".Bank_Balance")) {
             by.getYaml().set(player.getUniqueId() + ".MCID", player.getName());
@@ -48,7 +48,7 @@ public class Wallet {
         File file = new File(plugin.getDataFolder() + File.separator + config.getString("Yml_Folder"), "bank.yml");
         if(!file.exists()) {
             BankService bs = new BankService(plugin);
-            bs.init();
+            bs.initialize();
         }
         if(!by.getYaml().contains(player.getUniqueId() + ".Bank_Balance")) {
             by.getYaml().set(player.getUniqueId() + ".MCID", player.getName());
@@ -73,7 +73,7 @@ public class Wallet {
         File file = new File(new File(plugin.getDataFolder(), config.getString("Yml_Folder")), "bank.yml");
         if(!file.exists()) {
             BankService bs = new BankService(plugin);
-            bs.init();
+            bs.initialize();
         }
         YamlReader bank = new YamlReader(plugin, config.getString("Yml_Folder"), "bank.yml");
 

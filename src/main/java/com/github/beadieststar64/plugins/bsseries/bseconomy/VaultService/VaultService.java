@@ -26,7 +26,7 @@ public class VaultService {
     public VaultService(Plugin plugin) {
         this.plugin = plugin;
         getInstance = this;
-        getVIInstance = new VaultImplementer();
+        getVIInstance = new VaultImplementer(plugin);
         vh = new VaultHook(plugin);
         YamlReader config = new YamlReader(plugin);
         useVault = config.getYaml().getBoolean("Use_Vault");

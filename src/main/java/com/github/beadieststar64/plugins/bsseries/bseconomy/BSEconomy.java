@@ -10,9 +10,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class BSEconomy extends JavaPlugin {
 
+    public static BSEconomy getInstance;
+
     @Override
     public void onEnable() {
         //plugin initialize
+        getInstance = this;
+
         FileManager fm = new FileManager(this);
         fm.init(getDataFolder(), "RequestFiles.txt");
         YamlReader config = new YamlReader(this);
@@ -23,10 +27,9 @@ public final class BSEconomy extends JavaPlugin {
         if(VaultService.useVault) {
             getServer().getConsoleSender().sendMessage("[BCEconomy]" + ChatColor.AQUA + ts.getTranslator("Vault_Initialize"));
             vs.vaultInit();
-        }else{
-            BankService bs = new BankService(this);
-            bs.init();
         }
+        BankService bs = new BankService(this);
+        bs.initialize();
 
         //register commands
         getCommand("bank").setExecutor(new Commands(this));

@@ -1,3 +1,7 @@
 UUID:
   MCID: mcid
-  Bank_Balance: 0
+  Bank_Account:
+    Normal:
+      Balance: 10000
+    Sub:
+      Balance: 0

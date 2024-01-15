@@ -9,11 +9,6 @@ PermissionAPI: BSCore
 
 #BSBank Service
 Yml_Folder: yml
-Decimal_Balance: false
-Singular_Integer_Currency: #dollar
-Plural_Integer_Currency: #dollars
-Singular_Decimal_Currency: #scent
-Plural_Decimal_Currency: #scents
 Allow_Debt: true
 Debt_Limit: 100000
 Allow_Multiple_Account: false
